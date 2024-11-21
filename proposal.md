@@ -1,11 +1,12 @@
 # Project discription
 
-explain whats they are gonna build here
+i want to build a peacefull game providing people with a safe place to just play calming games, reducing enxiety kinda like the unpacking game 
 
 ## Need to have list
--thing one
--thing two
+-opening page 
+-relaxing music
+-common background
 
 ## Nice to have list 
--thing one
--thing two
+-click sounds
+-placing down sounds
