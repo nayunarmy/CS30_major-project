@@ -5,25 +5,27 @@ The focus is on providing a therapeutic experience without the usual pressure of
 This project combines engaging mechanics with tranquil visuals and sound design, aiming to reduce anxiety while showcasing thoughtful gameplay complexity.
 
 ## Need to have list
--opening page 
--relaxing music
--common background
--cutscene
--slow-paced game play 
--pastle colour palert
--minigames: unboxing, making cofee, making food, arranging , decoration #could add more
--simple rewards 
--stable transitions
--stable controle
--
+
+    -Opening page 
+    -Relaxing music
+    -Common background
+    -Cutscene
+    -Slow-paced game play 
+    -Pastle colour palert
+    -Minigames: unboxing, making cofee, making food, arranging , decoration 
+    -At least 3 mini games inside
+    -Simple rewards 
+    -Stable transitions
+    -Stable controle
 
 ## Nice to have list 
--click sounds
--placing down sounds
--expand mini games
--coustomasation option
--day and night cycle
--personalised music
--characters that interact
--hidden interactions: like the item/characters doing a cute animation when clicked on them
--customise the cafe name
+
+    -Click sounds
+    -Placing down sounds
+    -Expand mini games to more that just 3
+    -Coustomasation option
+    -Day and night cycle
+    -Personalised music
+    -Characters that interact
+    -Hidden interactions: like the item/characters doing a cute animation when clicked on them
+    -Customise the cafe name
