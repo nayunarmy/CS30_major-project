@@ -7,57 +7,53 @@
 
 
 
-
+//GLOBAL VARIABLES
 let menuOptions = ["Start Game", "Instructions", "Exit"];
 let selectedOption = -1;
+let playButton, instructionbutton;
 
 function setup() {
+  //BUTTONS
+
+  // startButton = createButton('Start');
+  // startButton.class('startButton');
+  // startButton.mouseClicked(optionPage);
+  // startButton.position(width / 2 - 150, height / 2 - 50);
+
+  // optionButton1 = createButton('Gen Z Slang');
+  // optionButton1.class('optionButton1');
+  // optionButton1.mouseClicked(() => startGame("GenZ"));
+  // optionButton1.position(width / 2 - 140, height / 2 + 40);
+
+  // optionButton2 = createButton('Gen A Slang');
+  // optionButton2.class('optionButton2');
+  // optionButton2.position(width / 2 - 140, height / 2 + 170);
+  // optionButton2.mouseClicked(() => startGame("GenA"));
+
+  // optionButton3 = createButton('Normal');
+  // optionButton3.class('optionButton3');
+  // optionButton3.position(width / 2 -140, height / 2 + 105);
+  // optionButton3.mouseClicked(() => startGame("normal"));
+
   createCanvas(windowWidth, windowHeight); 
   textAlign(CENTER, CENTER);
+
+  playButton = createButton('play');
+  playButton.class('playButton');
+  // playButton.mouseClicked(mainPage);
+  playButton.position(width/2, height/2);
+
+  instructionsButton = createButton('instructions');
+  instructionsButton.class('instructionbutton');
+  // instructionsButton.mouseClicked(instructionPage);
+  instructionsButton.position(width/2, height/2 + 50);
+
+  creditsButton = createButton('credits');
+  creditsButton.class('creditsButtons');
+  // creditsButton.mouseCLicked(creditsPage);
+  creditsButton.position(width/2, height/2 + 100);
+
 }
 
 function draw() {
-  background(200, 230, 250); 
-  
-  fill(200);
-  textSize(48);
-  text("Cozy Café", width / 2, 100);
-
- 
-  textSize(24);
-  for (let i = 0; i < menuOptions.length; i++) {
-    let x = width / 2;
-    let y = 200 + i * 100; 
-    rect(x - 100, y - 25, 200, 50, 10); 
-    fill(0); 
-    text(menuOptions[i], x, y);
-  }
-}
-
-function mousePressed() {
-  for (let i = 0; i < menuOptions.length; i++) {
-    let x = width / 2;
-    let y = 200 + i * 100;
-
-    if (mouseX > x - 100 && mouseX < x + 100 && mouseY > y - 25 && mouseY < y + 25) {
-      selectedOption = i; 
-      handleMenuSelection(i);
-    }
-  }
-}
-
-function handleMenuSelection(option) {
-  if (option === 0) {
-    console.log("Start Game clicked");
-
-  } 
-  else if (option === 1) {
-    console.log("Instructions clicked");
-    alert("Relax and enjoy your cozy café!\nPlay mini-games and unlock new areas.");
-  } 
-  else if (option === 2) {
-    console.log("Exit clicked");
-    alert("Goodbye! Thanks for playing!");
-    noLoop(); 
-  }
 }
