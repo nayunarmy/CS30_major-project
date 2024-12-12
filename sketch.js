@@ -41,7 +41,8 @@ function setup() {
 function draw() {
   if (gameState === "start") {
     drawStartScreen();
-  } else if (gameState === "game") {
+  }
+  else if (gameState === "game") {
     drawMainGame();
   }
 }
@@ -101,10 +102,18 @@ function drawMainGame() {
 
   let moveSpeed = 10 / zoom; 
 
-  if (keyIsDown(87)) camY -= moveSpeed; // W - Move up
-  if (keyIsDown(83)) camY += moveSpeed; // S - Move down
-  if (keyIsDown(65)) camX -= moveSpeed; // A - Move left
-  if (keyIsDown(68)) camX += moveSpeed; // D - Move right
+  if (keyIsDown(87)) {
+    camY -= moveSpeed;
+  } // W - Move up
+  if (keyIsDown(83)) {
+    camY += moveSpeed;
+  } // S - Move down
+  if (keyIsDown(65)) {
+    camX -= moveSpeed;
+  } // A - Move left
+  if (keyIsDown(68)) {
+    camX += moveSpeed;
+  } // D - Move right
 
 
   camX = constrain(camX, 0, bgImage.width * zoom - width);
@@ -142,7 +151,11 @@ function mousePressed() {
 // zooming function
 function keyPressed() {
   if (gameState === "game") {
-    if (key === '+') zoom = constrain(zoom + 0.1, 1, 3); 
-    if (key === '-') zoom = constrain(zoom - 0.1, 1, 3); 
+    if (key === '+') {
+      zoom = constrain(zoom + 0.1, 1, 3);
+    } 
+    if (key === '-') {
+      zoom = constrain(zoom - 0.1, 1, 3);
+    } 
   }
 }
