@@ -23,19 +23,19 @@
 
 let bgImage;
 let startImage;
-let camX = 0; // Camera's X position
-let camY = 0; // Camera's Y position
-let zoom = 1.5; // Zoom level (1 = original size, >1 = zoomed in)
-let gameState = "start"; // "start" for the opening screen, "game" for the main game
+let camX = 0; 
+let camY = 0; 
+let zoom = 1.5; 
+let gameState = "start"; 
 let playButton, instructionsButton, creditsButton;
 
 function preload() {
   startImage = loadImage('open page.jpg');
-  bgImage = loadImage('cafe basic reference.jpg'); // Load the background image
+  bgImage = loadImage('cafe basic reference.jpg'); 
 }
 
 function setup() {
-  createCanvas(1400, 600); // Set canvas size
+  createCanvas(1400, 600); 
 }
 
 function draw() {
@@ -51,7 +51,7 @@ function createStartScreenButtons() {
   playButton = createButton('Play');
   playButton.class('playButton');
   playButton.position(width / 2 - 50, height / 2 - 30);
-  playButton.mousePressed(() => currentPage = "main"); // Navigate to main game
+  playButton.mousePressed(() => currentPage = "main"); 
 
   // Instructions Button
   instructionsButton = createButton('Instructions');
@@ -106,23 +106,21 @@ function drawMainGame() {
   if (keyIsDown(65)) camX -= moveSpeed; // A - Move left
   if (keyIsDown(68)) camX += moveSpeed; // D - Move right
 
-  // Constrain camera to image bounds
+
   camX = constrain(camX, 0, bgImage.width * zoom - width);
   camY = constrain(camY, 0, bgImage.height * zoom - height);
 
-  // Camera logic (translate and scale)
+
   push();
-  translate(-camX, -camY); // Move the "camera"
-  scale(zoom); // Zoom in
-  image(bgImage, 0, 0); // Draw the background image
+  translate(-camX, -camY); 
+  scale(zoom); 
+  image(bgImage, 0, 0); 
   pop();
 
-  // Optional: Draw a player marker in the center
+ 
   fill(255, 0, 0);
-  ellipse(width / 2, height / 2, 20); // Player marker
+  ellipse(width / 2, height / 2, 20); //plyer maker
 }
-
-// Check for mouse clicks on the start button
 function mousePressed() {
   if (gameState === "start") {
     const buttonX = width / 2 - 100;
