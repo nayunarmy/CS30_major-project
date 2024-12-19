@@ -67,7 +67,6 @@ function createStartScreenButtons() {
   creditsButton.mousePressed(() => currentPage = "credits");
 }
 
-
 function drawStartScreen() {
 
   playButton.show;
@@ -95,7 +94,6 @@ function drawStartScreen() {
   fill(255);
   text("Use WASD to explore the café.", width / 2, height - 50);
 }
-
 
 function drawMainGame() {
   background(0);
@@ -130,6 +128,7 @@ function drawMainGame() {
   fill(255, 0, 0);
   ellipse(width / 2, height / 2, 20); //plyer maker
 }
+
 function mousePressed() {
   if (gameState === "start") {
     const buttonX = width / 2 - 100;
@@ -148,7 +147,6 @@ function mousePressed() {
   }
 }
 
-// zooming function
 function keyPressed() {
   if (gameState === "game") {
     if (key === '+') {
