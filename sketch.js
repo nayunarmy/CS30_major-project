@@ -1,10 +1,6 @@
-// Project Title
-// Your Name
+// cafee game
+// Navya Sauhta
 // Date
-//
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
-
 
 // playButton = createButton('play');
 // playButton.class('playButton');
@@ -23,19 +19,30 @@
 
 let bgImage;
 let startImage;
+let counterSpace;
 let camX = 0; 
 let camY = 0; 
-let zoom = 1.5; 
+let zoom = 3; 
 let gameState = "start"; 
 let playButton, instructionsButton, creditsButton;
+let counterWidth, counterHeight;
+let backbutton;
+
+let counterX = 500;
+let counterY = 300;
 
 function preload() {
   startImage = loadImage('open page.jpg');
   bgImage = loadImage('cafe basic reference.jpg'); 
+  counterSpace = loadImage('counter image.png', img =>{
+    counterWidth = img.width;
+    counterHeight = img.height;
+  });
 }
 
 function setup() {
   createCanvas(1400, 600); 
+  createStartScreenButtons();
 }
 
 function draw() {
@@ -45,117 +52,114 @@ function draw() {
   else if (gameState === "game") {
     drawMainGame();
   }
+  else if (gameState === "counter") {
+    drawCounterPage();
+  }
 }
 
 function createStartScreenButtons() {
-  // Play Button
   playButton = createButton('Play');
   playButton.class('playButton');
   playButton.position(width / 2 - 50, height / 2 - 30);
-  playButton.mousePressed(() => currentPage = "main"); 
+  playButton.mousePressed(() => gameState = "game");
 
-  // Instructions Button
   instructionsButton = createButton('Instructions');
   instructionsButton.class('instructionsButton');
   instructionsButton.position(width / 2 - 50, height / 2 + 30);
-  instructionsButton.mousePressed(() => currentPage = "instructions");
+  instructionsButton.mousePressed(() => alert("Instructions: Use WASD to move."));
 
-  // Credits Button
   creditsButton = createButton('Credits');
   creditsButton.class('creditsButton');
   creditsButton.position(width / 2 - 50, height / 2 + 90);
-  creditsButton.mousePressed(() => currentPage = "credits");
+  creditsButton.mousePressed(() => alert("Credits: Made by Navya Sauhta"));
 }
 
-
 function drawStartScreen() {
+  playButton.show();
+  instructionsButton.show();
+  creditsButton.show();
 
-  playButton.show;
-  instructionsButton.show;
-  creditsButton.show;
-
-  image(startImage, 0, 0, width, height); 
-
-  // Title
+  image(startImage, 0, 0, width, height);
   textAlign(CENTER, CENTER);
   textSize(60);
   fill(255);
   text("Café de Chill", width / 2, height / 4);
 
-  // // Start button
-  // fill(255);
-  // rectMode(CENTER);
-  // rect(width / 2, height / 2, 200, 50, 10);
-  // fill(0);
-  // textSize(25);
-  // text("Start Game", width / 2, height / 2);
-
-  //  Basic instructions
   textSize(20);
   fill(255);
   text("Use WASD to explore the café.", width / 2, height - 50);
 }
 
-
 function drawMainGame() {
+  playButton.hide();
+  instructionsButton.hide();
+  creditsButton.hide();
+
   background(0);
 
-  let moveSpeed = 10 / zoom; 
+  let moveSpeed = 10 / zoom;
 
-  if (keyIsDown(87)) {
-    camY -= moveSpeed;
-  } // W - Move up
-  if (keyIsDown(83)) {
-    camY += moveSpeed;
-  } // S - Move down
-  if (keyIsDown(65)) {
-    camX -= moveSpeed;
-  } // A - Move left
-  if (keyIsDown(68)) {
-    camX += moveSpeed;
-  } // D - Move right
-
+  if (keyIsDown(87)) camY -= moveSpeed;
+  if (keyIsDown(83)) camY += moveSpeed;
+  if (keyIsDown(65)) camX -= moveSpeed;
+  if (keyIsDown(68)) camX += moveSpeed;
 
   camX = constrain(camX, 0, bgImage.width * zoom - width);
   camY = constrain(camY, 0, bgImage.height * zoom - height);
 
-
   push();
-  translate(-camX, -camY); 
-  scale(zoom); 
-  image(bgImage, 0, 0); 
+  translate(-camX, -camY);
+  scale(zoom);
+  image(bgImage, 0, 0);
+  image(counterSpace, counterX, counterY);
   pop();
 
- 
   fill(255, 0, 0);
-  ellipse(width / 2, height / 2, 20); //plyer maker
-}
-function mousePressed() {
-  if (gameState === "start") {
-    const buttonX = width / 2 - 100;
-    const buttonY = height / 2 - 25;
-    const buttonW = 200;
-    const buttonH = 50;
+  ellipse(width / 2, height / 2, 20);//pointer
 
-    if (
-      mouseX > buttonX &&
-      mouseX < buttonX + buttonW &&
-      mouseY > buttonY &&
-      mouseY < buttonY + buttonH
-    ) {
-      gameState = "game"; 
+  if(
+    mouseX + camX > counterX && mouseX + camX < counterX + counterWidth && mouseY + camY > counterY && mouseY + camY < counterY + counterHeight){
+      noFill();
+      stroke(255, 255, 0);
+      strokeWeight(3);
+      rect(counterX, counterY, counterWidth, counterHeight);
     }
+  
+}
+
+function drawCounterPage() {
+  background(200);
+  textAlign(CENTER, CENTER);
+  textSize(40);
+  fill(0);
+  text("Counter Page : Make cofee!!", width / 2, height / 4);
+
+  if (!backbutton){
+    backbutton = createButton('Back');
+    backbutton.position(width / 2 - 50, height / 2 - 100);
+    backbutton.mousePressed(() => {
+      gameState = "game";
+    backbutton.hide();
+  });
   }
 }
 
-// zooming function
-function keyPressed() {
+function mouseClicked() {
   if (gameState === "game") {
-    if (key === '+') {
-      zoom = constrain(zoom + 0.1, 1, 3);
-    } 
-    if (key === '-') {
-      zoom = constrain(zoom - 0.1, 1, 3);
-    } 
+    let screenX = mouseX + camX;
+    let screenY = mouseY + camY;
+
+    if(
+      screenX > counterX && screenX < counterX + counterWidth && screenY > counterY && screenY < counterY + counterHeight){
+        gameState = "counter";
+      }
   }
 }
+
+function keyPressed() {
+  if (gameState === "game"){
+    if (key === '+') zoom = constrain(zoom + 0.1, 1, 3);
+    if (key === '-') zoom = constrain(zoom - 0.1, 1, 3);
+  }
+}
+
