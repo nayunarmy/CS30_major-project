@@ -115,7 +115,19 @@ function drawMainGame() {
   pop();
 
   fill(255, 0, 0);
+<<<<<<< HEAD
   ellipse(width / 2, height / 2, 20);//pointer
+=======
+  ellipse(width / 2, height / 2, 20); //plyer maker
+}
+
+function mousePressed() {
+  if (gameState === "start") {
+    const buttonX = width / 2 - 100;
+    const buttonY = height / 2 - 25;
+    const buttonW = 200;
+    const buttonH = 50;
+>>>>>>> 50cf0fe25a351167e14544d7f043bff98738c4d9
 
   if(
     mouseX + camX > counterX && mouseX + camX < counterX + counterWidth && mouseY + camY > counterY && mouseY + camY < counterY + counterHeight){
@@ -144,7 +156,11 @@ function drawCounterPage() {
   }
 }
 
+<<<<<<< HEAD
 function mouseClicked() {
+=======
+function keyPressed() {
+>>>>>>> 50cf0fe25a351167e14544d7f043bff98738c4d9
   if (gameState === "game") {
     let screenX = mouseX + camX;
     let screenY = mouseY + camY;
