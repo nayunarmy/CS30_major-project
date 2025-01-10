@@ -233,10 +233,10 @@ function draw() {
   if (gameState === "start") {
     drawStartScreen();
   }
-    else if (gameState === "game") {
-      drawMainGame();
-    }
+  else if (gameState === "game") {
+    drawMainGame();
   }
+}
 
 //button functions
 function createStartScreenButtons() {
@@ -277,10 +277,18 @@ function drawMainGame() {
 
   //WASD movement
   let moveSpeed = 10 / zoom;
-  if (keyIsDown(87)) camY -= moveSpeed;//w
-  if (keyIsDown(83)) camY += moveSpeed;//s
-  if (keyIsDown(65)) camX -= moveSpeed;//a
-  if (keyIsDown(68)) camX += moveSpeed;//d
+  if (keyIsDown(87)) {
+    camY -= moveSpeed;
+  }//w
+  if (keyIsDown(83)) {
+    camY += moveSpeed;
+  }//s
+  if (keyIsDown(65)) {
+    camX -= moveSpeed;
+  }//a
+  if (keyIsDown(68)) {
+    camX += moveSpeed;
+  }//d
 
   camX = constrain(camX, 0, cafeImg.width * zoom - width);
   camY = constrain(camY, 0, cafeImg.height * zoom - height);
@@ -320,8 +328,12 @@ function drawCounterPage() {
 
 function keyPressed() {
   if (gameState === "game") {
-    if (keyCode === 187) zoom = constrain(zoom + 0.1, 1, 3);
-    if (keyCode === 189) zoom = constrain(zoom - 0.1, 1, 3);
+    if (keyCode === 187) {
+      zoom = constrain(zoom + 0.1, 1, 3);
+    }
+    if (keyCode === 189) {
+      zoom = constrain(zoom - 0.1, 1, 3);
+    }
   }
 }
 
